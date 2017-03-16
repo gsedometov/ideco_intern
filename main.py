@@ -1,20 +1,16 @@
 from aiohttp import web
+from jinja2.loaders import FileSystemLoader
+import aiohttp_jinja2
 
-from service import SystemService
-
-async def handle(request):
-    global daemon
-    #name = request.match_info.get('name', "Anonymous")
-    #text = "Hello, " + name
-    return web.Response(text=daemon.status)
+from service import daemon
+from view import index
 
 def main():
     app = web.Application()
-    app.router.add_get('/', handle)
-    app.router.add_get('/{name}', handle)
+    aiohttp_jinja2.setup(app, loader=FileSystemLoader(''))
+    app.router.add_get('/', index)
     web.run_app(app)
 
+
 if __name__ == '__main__':
-    daemon = SystemService()
-    daemon.run()
     main()

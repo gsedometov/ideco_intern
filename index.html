@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+  <div id="content">
+    Сервис {{ 'запущен' if  status == 'on' else 'остановлен' }}<br>
+    <button type="button" name="button_run">Запустить</button><br>
+    <button type="button" name="button_restart">Перезапустить</button><br>
+    <button type="button" name="button_stop">Остановить</button><br>
+    <input type="checkbox" name="checkbox_available">Включить сервис<br>
+  </div>
+</body>
+</html>

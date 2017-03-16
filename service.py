@@ -2,7 +2,8 @@ from enum import Enum
 
 class SystemService(object):
     def __init__(self):
-        pass
+        self._status = 'off'
+        self._isAvailable = False
 
     @property
     def status(self):
@@ -30,3 +31,5 @@ class SystemService(object):
         self.status = 'off'
         print('restarting')
         self.status = 'on'
+
+daemon = SystemService()
