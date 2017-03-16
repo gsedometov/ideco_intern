@@ -8,6 +8,7 @@ from view import index
 def main():
     app = web.Application()
     aiohttp_jinja2.setup(app, loader=FileSystemLoader(''))
+    app.router.add_static('/static', 'static')
     app.router.add_get('/', index)
     web.run_app(app)
 

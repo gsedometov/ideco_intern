@@ -1,4 +1,5 @@
 import aiohttp_jinja2
+import aiohttp.web_urldispatcher as dispatcher
 
 from service import daemon
 
@@ -6,6 +7,6 @@ from service import daemon
 def index(request):
     resp = {
         'status': daemon.status,
-        'availability': daemon.isAvailable
+        'availability': daemon.isAvailable,
     }
     return resp
