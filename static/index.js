@@ -36,3 +36,7 @@ function stop_service() {
     location.reload(true);
   }
 }
+
+function switch_availability(old_value){
+  // TODO Сделать переключалку состояния
+}

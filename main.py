@@ -17,6 +17,10 @@ def stop(request):
     daemon.stop()
     return web.Response(text='Сервис остановлен')
 
+def set_availability(request):
+    # TODO Сделать переключалку состояния
+    pass
+
 def main():
     app = web.Application()
     aiohttp_jinja2.setup(app, loader=FileSystemLoader(''))

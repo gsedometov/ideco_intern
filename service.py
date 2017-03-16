@@ -3,7 +3,7 @@ from enum import Enum
 class SystemService(object):
     def __init__(self):
         self._status = 'off'
-        self._isAvailable = False
+        self._isAvailable = True
 
     @property
     def status(self):

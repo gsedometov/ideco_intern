@@ -9,3 +9,8 @@ a.button {
   text-align: center;
   color: initial;
 }
+
+.button {
+  width: 100px;
+  margin: 5px;
+}
