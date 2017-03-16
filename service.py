@@ -22,9 +22,11 @@ class SystemService(object):
         self._isAvailable = new_state
 
     def run(self):
+        print('starting')
         self.status = 'on'
 
     def stop(self):
+        print('stopping')
         self.status = 'off'
 
     def restart(self):
