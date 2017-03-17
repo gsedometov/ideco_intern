@@ -10,7 +10,7 @@ a.button {
   color: initial;
 }
 
-.button {
+.button.control {
   width: 100px;
   margin: 5px;
 }

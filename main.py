@@ -17,9 +17,9 @@ def stop(request):
     daemon.stop()
     return web.Response(text='Сервис остановлен')
 
-def set_availability(request):
-    # TODO Сделать переключалку состояния
-    pass
+def switch(request):
+    daemon.switch()
+    return web.Response(text='Сервис переключён')
 
 def main():
     app = web.Application()
@@ -29,6 +29,7 @@ def main():
     app.router.add_get('/start', start)
     app.router.add_get('/restart', restart)
     app.router.add_get('/stop', stop)
+    app.router.add_get('/switch', switch)
     web.run_app(app)
 
 

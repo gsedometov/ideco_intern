@@ -8,21 +8,17 @@
 <body>
   <div id="content">
     Сервис {{ 'запущен' if  status == 'on' else 'остановлен' }}<br>
-    <button class="button" name="button_run" onclick="start_service()" {{ 'disabled' if availability == False else '' }}>
+    <button class="button control" name="button_run" onclick="start_service()" {{ 'disabled' if availability == False else '' }}>
       Запустить
     </button><br>
-    <button class="button" name="button_restart" onclick="restart_service()" {{ 'disabled' if availability == False else '' }}>
+    <button class="button control" name="button_restart" onclick="restart_service()" {{ 'disabled' if availability == False else '' }}>
       Перезапустить
     </button><br>
-    <button class="button" name="button_stop" onclick="stop_service()" {{ 'disabled' if availability == False else '' }}>
+    <button class="button control" name="button_stop" onclick="stop_service()" {{ 'disabled' if availability == False else '' }}>
       Остановить
     </button><br>
-    <!--
-    <a class="button" href="javascript:void(0);" onclick="start_service()">Запустить</a><br>
-    <a class="button" href="javascript:void(0);" onclick="restart_service()">Перезапустить</a><br>
-    <a class="button" href="javascript:void(0);" onclick="stop_service()">Остановить</a><br>
-  -->
-    <input type="checkbox" name="checkbox_available" {{ 'checked' if availability == True else '' }}>Включить сервис<br>
+    <input type="checkbox" id='availability_check' name="checkbox_available" onchange="switch_availability()" {{ 'checked' if availability == True else '' }}>
+      Включить сервис<br>
   </div>
 </body>
 </html>

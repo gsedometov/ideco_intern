@@ -37,6 +37,16 @@ function stop_service() {
   }
 }
 
-function switch_availability(old_value){
-  // TODO Сделать переключалку состояния
+function switch_availability(){
+  new_value = document.getElementById('availability_check').checked;
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('GET', 'switch', false);
+  xhr.send();
+
+  if (xhr.status != 200) {
+    alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+  } else {
+    location.reload(true);
+  }
 }

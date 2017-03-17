@@ -34,4 +34,7 @@ class SystemService(object):
         print('restarting')
         self.status = 'on'
 
+    def switch(self):
+        self.isAvailable = not self.isAvailable
+
 daemon = SystemService()
