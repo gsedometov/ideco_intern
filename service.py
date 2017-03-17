@@ -20,7 +20,6 @@ class SystemService(object):
             f = open('is_available')
         except FileNotFoundError:
             self.isAvailable = False
-            return self.isAvailable
         try:
             state = eval(f.read())
         except ValueError:
