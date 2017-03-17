@@ -1,9 +1,11 @@
+import asyncio
+import time
 from enum import Enum
 
 class SystemService(object):
     def __init__(self):
         self._status = 'off'
-        self._isAvailable = True
+        self._isAvailable = False
 
     @property
     def status(self):
