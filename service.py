@@ -5,7 +5,6 @@ from enum import Enum
 class SystemService(object):
     def __init__(self):
         self._status = 'off'
-        #self._isAvailable = False
 
     @property
     def status(self):
@@ -17,7 +16,6 @@ class SystemService(object):
 
     @property
     def isAvailable (self):
-        #return self._isAvailable
         try:
             f = open('is_available')
         except FileNotFoundError:
@@ -31,7 +29,6 @@ class SystemService(object):
 
     @isAvailable.setter
     def isAvailable(self, new_state):
-        #self._isAvailable = new_state
         with open('is_available', 'w') as f:
             f.write(str(new_state))
 
