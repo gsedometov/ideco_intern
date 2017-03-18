@@ -47,14 +47,23 @@ class SystemService(object):
             f.write(str(new_state))
 
     def run(self):
+        if self.check_status() == 'on':
+            print('service already started')
+            return
         print('starting')
         subprocess.Popen('sudo systemctl start dummy'.split())
 
     def stop(self):
+        if self.check_status() == 'off':
+            print('service already stopped')
+            return
         print('stopping')
         subprocess.Popen('sudo systemctl stop dummy'.split())
 
     def restart(self):
+        if self.check_status() == 'off':
+            print('service is not started')
+            return
         print('restarting')
         subprocess.Popen('sudo systemctl restart dummy'.split())
 
