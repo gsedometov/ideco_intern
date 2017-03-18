@@ -1,19 +1,33 @@
-import asyncio
 import subprocess
-import time
 from enum import Enum
 
 class SystemService(object):
+    '''
+    Класс, реализующий взаимодействие с системной службой
+    Свойства:
+    isAvailable - активность сервиса в (связана с чекбоксом)
+    status (read-only) - статус сервиса ('on'/'off')
+    Методы:
+    run, stop, restart, switch
+    '''
     def __init__(self):
-        self._status = 'off'
+        pass
+
+    def check_status(self):
+        reader = subprocess.Popen(['sudo', 'systemctl', 'status', 'dummy'], stdout=subprocess.PIPE)
+        #Skip first 2 lines
+        for _ in range(2):
+            reader.stdout.readline()
+        current_status = reader.stdout.readline().split()[1]
+        if current_status in (b'active', b'activating'):
+            status = 'on'
+        else:
+            status = 'off'
+        return status
 
     @property
     def status(self):
-        return self._status
-
-    @status.setter
-    def status(self, new_state):
-        self._status = new_state
+        return self.check_status()
 
     @property
     def isAvailable(self):
@@ -36,18 +50,14 @@ class SystemService(object):
     def run(self):
         print('starting')
         subprocess.Popen('sudo systemctl start dummy'.split())
-        self.status = 'on'
 
     def stop(self):
         print('stopping')
         subprocess.Popen('sudo systemctl stop dummy'.split())
-        self.status = 'off'
 
     def restart(self):
-        self.status = 'off'
         print('restarting')
         subprocess.Popen('sudo systemctl restart dummy'.split())
-        self.status = 'on'
 
     def switch(self):
         self.isAvailable = not self.isAvailable
