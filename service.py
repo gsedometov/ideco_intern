@@ -1,5 +1,4 @@
 import subprocess
-from enum import Enum
 
 class SystemService(object):
     '''
