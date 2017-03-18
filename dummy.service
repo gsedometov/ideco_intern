@@ -1,0 +1,13 @@
+[Unit]
+Description=Simple test service
+
+[Service]
+Type=forking
+ExecStart=/bin/sh /home/gsedometov/ideco_intern/dummy.sh start
+ExecStop=/bin/sh /home/gsedometov/ideco_intern/dummy.sh stop
+ExecRestart=/bin/sh /home/gsedometov/ideco_intern/dummy.sh restart
+LimitNPROC=1
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

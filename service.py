@@ -1,4 +1,5 @@
 import asyncio
+import subprocess
 import time
 from enum import Enum
 
@@ -15,7 +16,7 @@ class SystemService(object):
         self._status = new_state
 
     @property
-    def isAvailable (self):
+    def isAvailable(self):
         try:
             f = open('is_available')
         except FileNotFoundError:
@@ -23,7 +24,7 @@ class SystemService(object):
             return self.isAvailable()
         try:
             state = eval(f.read())
-        except ValueError:
+        except:
             raise ValueError('Файл состояния повреждён')
         return state
 
@@ -34,15 +35,18 @@ class SystemService(object):
 
     def run(self):
         print('starting')
+        subprocess.Popen('sudo systemctl start dummy'.split())
         self.status = 'on'
 
     def stop(self):
         print('stopping')
+        subprocess.Popen('sudo systemctl stop dummy'.split())
         self.status = 'off'
 
     def restart(self):
         self.status = 'off'
         print('restarting')
+        subprocess.Popen('sudo systemctl restart dummy'.split())
         self.status = 'on'
 
     def switch(self):
