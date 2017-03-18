@@ -9,15 +9,19 @@ def test_init():
 def test_run():
     test_daemon = SystemService()
     test_daemon.run()
+    time.sleep(.5)
     assert test_daemon.status == 'on'
 
 def test_stop():
     test_daemon = SystemService()
     test_daemon.stop()
+    time.sleep(.5)
     assert test_daemon.status == 'off'
 
 def test_restart():
     test_daemon = SystemService()
     test_daemon.run()
+    time.sleep(.5)
     test_daemon.restart()
+    time.sleep(.5)
     test_daemon.status == 'on'
