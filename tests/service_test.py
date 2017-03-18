@@ -4,9 +4,7 @@ from ..service import SystemService
 
 def test_init():
     test_daemon = SystemService()
-    #enabled = test_daemon.isAvailable
-    #assert enabled == False
-    assert test_daemon.status == 'off'
+    assert test_daemon.check_status() in ('on', 'off')
 
 def test_run():
     test_daemon = SystemService()
