@@ -5,7 +5,6 @@ Description=Simple test service
 Type=forking
 ExecStart=/bin/sh /home/gsedometov/ideco_intern/dummy.sh start
 ExecStop=/bin/sh /home/gsedometov/ideco_intern/dummy.sh stop
-ExecRestart=/bin/sh /home/gsedometov/ideco_intern/dummy.sh restart
 LimitNPROC=1
 KillMode=process
 
